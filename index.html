@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Gameboy Instructions</title>
 
     <style>
         table, th, td {
@@ -99,7 +99,7 @@
             const value = filter.bitLookup
                 .replaceAll(' ', '')
                 .trim()
-                .padEnd(8, 'n');
+                .padEnd(8, '-');
 
             const filtered = lookup
                 .filter(n => n.hasPrefix === filter.prefix)
@@ -120,8 +120,11 @@
                         ...n,
                         binColors: value.split('').map((b) => {
 
-                            return (b === '0' ||  b === '1')
-                                ? '#cfcfcf' : `#${(b.charCodeAt() * 343).toString(16).padStart(6, '0')}` ;
+                            if(b === '-') return 'none';
+                            if((b === '0' ||  b === '1')) return '#cfcfcf';
+
+
+                                return `#${(b.charCodeAt() * 343).toString(16).padStart(6, '0')}` ;
                         })
                     };
                 });
